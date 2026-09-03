@@ -15,16 +15,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-
-      # هذه الخطوة تضمن إعطاء صلاحية التشغيل لملف gradlew لمنع فشل البناء
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
-      # تم تصحيح أمر البناء هنا إلى الأمر القياسي لأندرويد
-      - name: Build with Gradle
-        run: ./gradlew assembleDebug
+      # هذه الإضافة ستقوم بإعداد وتشغيل Gradle تلقائياً وبأمان
+      - name: Setup and Build with Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          arguments: assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
