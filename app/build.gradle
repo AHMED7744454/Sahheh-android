@@ -1,23 +1,16 @@
-plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     namespace 'com.sahheh.app'
-    compileSdk 34
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "com.sahheh.app"
-        minSdk 23
-        targetSdk 34
+        minSdkVersion 23
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
-    }
-
-    // هذا السطر السحري لحل مشكلة السيرفر وتفعيل الـ BuildConfig
-    buildFeatures {
-        buildConfig true
     }
 
     buildTypes {
