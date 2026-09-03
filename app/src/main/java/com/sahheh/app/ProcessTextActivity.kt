@@ -20,13 +20,11 @@ class ProcessTextActivity : Activity() {
         val readOnly = intent?.getBooleanExtra(Intent.EXTRA_PROCESS_TEXT_READONLY, true) ?: true
 
         if (readOnly) {
-            // النص مش قابل للاستبدال المباشر (زي صفحة ويب للقراءة بس)
-            // فبنعرض خيار مشاركة/نسخ النص المصحح بدل ما نستبدله
             val shareIntent = Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
                 putExtra(Intent.EXTRA_TEXT, fixed)
             }
-            startActivity(Intent.createChooser(shareIntent, "النص المصحح"))
+            startActivity(Intent.createChooser(shareIntent, "نص المصحح"))
         } else {
             val result = Intent()
             result.putExtra(Intent.EXTRA_PROCESS_TEXT, fixed as CharSequence)
