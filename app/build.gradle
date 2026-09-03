@@ -15,6 +15,11 @@ android {
         versionName "1.0"
     }
 
+    // هذا السطر السحري لحل مشكلة السيرفر وتفعيل الـ BuildConfig
+    buildFeatures {
+        buildConfig true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
