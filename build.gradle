@@ -15,3 +15,6 @@ allprojects {
         mavenCentral()
     }
 }
+
+// السطر السحري لربط الموديول إجبارياً وحل مشكلة السيرفر
+apply from: 'app/build.gradle'
