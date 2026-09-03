@@ -15,11 +15,12 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # هذه الإضافة ستقوم بإعداد وتشغيل Gradle تلقائياً وبأمان
-      - name: Setup and Build with Gradle
+      - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
-        with:
-          arguments: assembleDebug
+
+      # استخدام أمر gradle المباشر والنظيف بدون ملف gradlew
+      - name: Build with Gradle
+        run: gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
