@@ -3,12 +3,13 @@ package com.sahheh.app
 object KeyboardMap {
 
     private val en2ar: Map<Char, String> = mapOf(
-        '`' to "ذ", 'q' to "ض", 'w' to "ص", 'e' to "ث", 'r' to "ق", 't' to "ف",
-        'y' to "غ", 'u' to "ع", 'i' to "ه", 'o' to "خ", 'p' to "ح", '[' to "ج", ']' to "د",
-        'a' to "ش", 's' to "س", 'd' to "ي", 'f' to "ب", 'g' to "ل", 'h' to "ا",
-        'j' to "ت", 'k' to "ن", 'l' to "م", ';' to "ك", '\'' to "ط",
-        'z' to "ئ", 'x' to "ء", 'c' to "ؤ", 'v' to "ر", 'b' to "لا", 'n' to "ى", 'm' to "ة",
-        ',' to "و", '.' to "ز", '/' to "ظ"
+        'q' to "َ", 'w' to "ً", 'e' to "ُ", 'r' to "ٌ", 't' to "لإ",
+        'y' to "إ", 'u' to "`", 'i' to "÷", 'o' to "×", 'p' to "؛", 
+        '[' to "<", ']' to ">", 'a' to "ِ", 's' to "ٍ", 'd' to "لأ", 
+        'f' to "أ", 'g' to "ـ", 'h' to "أ", 'j' to "ـ", 'k' to "،", 
+        'l' to "/", ';' to ":", '\'' to "\"", 'z' to "~", 'x' to "ْ", 
+        'c' to "}", 'v' to "{", 'b' to "لآ", 'n' to "آ", 'm' to "'", 
+        ',' to ",", '.' to ".", '/' to "؟"
     )
 
     private val ar2en: Map<String, Char> = en2ar
@@ -24,7 +25,7 @@ object KeyboardMap {
                 }
             }
         } else {
-            val cleaned = text.replace("لا", "b")
+            val cleaned = text.replace("لا", "ل")
             buildString {
                 for (ch in cleaned) {
                     val mapped = ar2en[ch.toString()]
@@ -44,5 +45,7 @@ object KeyboardMap {
         return if (arCount > enCount) "ar2en" else "en2ar"
     }
 
-    fun fix(text: String): String = convert(text, detectDirection(text))
+    fun fix(text: String): String {
+        return convert(text, detectDirection(text))
+    }
 }
